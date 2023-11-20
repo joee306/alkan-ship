@@ -66,7 +66,7 @@
         },
     ];
 
-    let alk = "4,5-Ethyl-4-Methylnonan";
+    let alk = "4,5-Ethyl-4-pentylnonan";
 
     //initial = converter.new_structure("2,2-ethyloctan");
 
@@ -89,9 +89,7 @@
 
 <main>
     <input class="input-style" role="button" type="text" bind:value={alk} />
-    <button class="input-style" role="button" type="button" on:click={convert}
-        >Render</button
-    >
+    <button class="input-style" type="button" on:click={convert}>Render</button>
 </main>
 
 <svg
@@ -108,9 +106,10 @@
             font-family="Verdana"
             y={item.y}
             x={item.x}
-            >{item.e}<tspan font-size="11" baseline-shift="sub">{item.n}</tspan
-            ></text
-        >
+            >{item.e}{#if item.n != 1 && item.n != 0}
+                <tspan font-size="11" baseline-shift="sub">{item.n}</tspan>
+            {/if}
+        </text>
     {/each}
     {#each render_line_array as item}
         <line

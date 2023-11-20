@@ -36,10 +36,23 @@ export const render = (array: Structure[]) => {
     const pos: number[] = [100, 150];
     let max_x = 0;
     let max_y = 0;
+    let min_y = 0;
     const space = 50;
+    let leave_next = false;
 
     const horz_line = (e: string, n: number, pos: number[][]) => {
-        render_array.push({ e: e, n: n, x: pos[1][0], y: pos[1][1], })
+        let add = 0;
+        if (leave_next) {
+            add = 10;
+            leave_next = false;
+        }
+        let new_e = e;
+        if (n == 0) {
+            leave_next = true;
+            new_e = e.slice(0, -1);
+        }
+
+        render_array.push({ e: new_e, n: n, x: pos[1][0], y: pos[1][1], })
         if (pos[0][0] > pos[1][0]) {
             let t = pos[0];
             pos[0] = pos[1];
@@ -48,7 +61,7 @@ export const render = (array: Structure[]) => {
         if (pos[1][0] > max_x) {
             max_x = pos[1][0];
         }
-        render_line_array.push({ x1: pos[0][0] + (e.length * 10), y1: pos[0][1] - 5, x2: pos[1][0], y2: pos[1][1] - 5 });
+        render_line_array.push({ x1: pos[0][0] + (e.length * 10) - add, y1: pos[0][1] - 5, x2: pos[1][0], y2: pos[1][1] - 5 });
     }
 
     const vert_line = (e: string, n: number, pos: number[][]) => {
@@ -60,6 +73,9 @@ export const render = (array: Structure[]) => {
         }
         if (pos[1][1] > max_y) {
             max_y = pos[1][1];
+        }
+        if (pos[1][1] < min_y) {
+            min_y = pos[1][1];
         }
         render_line_array.push({ x1: pos[0][0] + 5, y1: pos[0][1] + 1, x2: pos[1][0] + 5, y2: pos[1][1] - 11 });
     }
@@ -103,11 +119,36 @@ export const render = (array: Structure[]) => {
         create_render(next_pos, index + 1, array, dir);
     }
 
+    const corect_y = (array: ElementPart[], y: number) => {
+        array.forEach(e => {
+            e.y -= y
+            e.y += 150
+            if (e.y > max_y) {
+                max_y = e.y + 50;
+            }
+        });
+        return array;
+    }
+    const corect_y_line = (array: Line[], y: number) => {
+        array.forEach(e => {
+            e.y1 -= y
+            e.y1 += 150
+            e.y2 -= y
+            e.y2 += 150
+        });
+        return array;
+    }
+
     create_render(pos, 0, array, WDir.L);
     render_line_array.shift();
     max_x += pos[0];
     max_y += pos[1];
 
+
+    if (min_y < 0) {
+        render_line_array = corect_y_line(render_line_array, min_y);
+        render_array = corect_y(render_array, min_y);
+    }
 
     return {
         render_array: render_array,
