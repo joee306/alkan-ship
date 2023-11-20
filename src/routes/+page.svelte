@@ -66,7 +66,7 @@
         },
     ];
 
-    let alk = "4,5-Ethyl-4-pentylnonan";
+    let alk = "4,4-Ethyl-5-Propylnonanol";
 
     //initial = converter.new_structure("2,2-ethyloctan");
 
