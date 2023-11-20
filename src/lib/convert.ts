@@ -83,7 +83,6 @@ const join = (split_array: any[][]) => {
 }
 
 const merge_ends = (array: any[][]) => {
-    console.log(array)
     let next = [];
     let last = [];
     for (let i = 0; i < array.length; i += 2) {
@@ -103,7 +102,6 @@ const merge_ends = (array: any[][]) => {
     if (last.length) {
         next.push([last, [0]])
     }
-    console.log(next)
     return next;
 }
 
@@ -180,12 +178,15 @@ const to_render = (prestructure: PreStructure[]) => {
         } else {
             element = preelement.element + preelement.num;
         }
-        structure.push({ element: element, sides: preelement.sides });
+        let sides: Structure[] = [];
+        preelement.sides.forEach(sid => {
+            sides.push(to_render(sid));
+        });
+        structure.push({ element: element, sides: sides });
     })
     return structure;
 }
 
 export const new_structure = (name: string) => {
-    console.clear();
     return to_render(build(merge_ends(join(split(name.toLowerCase())))));
 };

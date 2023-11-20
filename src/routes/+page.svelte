@@ -73,6 +73,7 @@
     let render_array: ElementPart[] = []; // = render_math.calculate(initial, 250, 250, 0, 50);
     let render_line_array: Line[] = []; //render_math.calculate_lines(render_array, 50);
     let max_x = 500;
+    let max_y = 100;
 
     const convert = () => {
         structure = converter.new_structure(alk);
@@ -80,7 +81,7 @@
         render_array = out.render_array;
         render_line_array = out.render_line_array;
         max_x = out.max_x;
-        console.table(structure);
+        max_y = out.max_y;
     };
 
     convert();
@@ -95,7 +96,7 @@
 
 <svg
     class="canvas"
-    height="800"
+    height={max_y}
     width={max_x}
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
