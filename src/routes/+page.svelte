@@ -73,7 +73,7 @@
     let render_array: ElementPart[] = []; // = render_math.calculate(initial, 250, 250, 0, 50);
     let render_line_array: Line[] = []; //render_math.calculate_lines(render_array, 50);
     let max_x = 500;
-    let max_y = 100;
+    let max_y = 200;
 
     const convert = () => {
         structure = converter.new_structure(alk);

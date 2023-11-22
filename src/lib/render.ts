@@ -33,7 +33,7 @@ enum WDir {
 export const render = (array: Structure[]) => {
     let render_array: ElementPart[] = []; // = render_math.calculate(initial, 250, 250, 0, 50);
     let render_line_array: Line[] = []; //render_math.calculate_lines(render_array, 50);
-    const pos: number[] = [100, 150];
+    const pos: number[] = [200, 250];
     let max_x = 0;
     let max_y = 0;
     let min_y = 0;
@@ -144,10 +144,15 @@ export const render = (array: Structure[]) => {
     max_x += pos[0];
     max_y += pos[1];
 
-
     if (min_y < 0) {
         render_line_array = corect_y_line(render_line_array, min_y);
         render_array = corect_y(render_array, min_y);
+    }
+
+    console.log("not" + max_y);
+    if (max_y < 400) {
+        console.log(max_y);
+        max_y = 400;
     }
 
     return {
