@@ -142,7 +142,11 @@ const build_base = (base: any[][]) => {
             structure.at(-1).num += 1;
             break;
         case "anol":
-            structure.push({ element: "OH", num: 1, sides: [] });
+            // @ts-ignore: Object is possibly 'undefined'.
+            structure.at(-1).num += 1;
+            // @ts-ignore: Object is possibly 'undefined'.
+            structure.at(0).num -= 1;
+            structure.unshift({ element: "OH", num: 1, sides: [] });
             break;
 
     }

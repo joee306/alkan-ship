@@ -38,8 +38,6 @@ declare module '$env/static/private' {
 	export const LAST_EXIT_CODE: string;
 	export const NODE: string;
 	export const DIRS_POSITION: string;
-	export const CREDENTIALS_DIRECTORY: string;
-	export const MEMORY_PRESSURE_WRITE: string;
 	export const PROMPT_MULTILINE_INDICATOR: string;
 	export const COLOR: string;
 	export const npm_config_local_prefix: string;
@@ -49,10 +47,10 @@ declare module '$env/static/private' {
 	export const EDITOR: string;
 	export const XDG_SEAT: string;
 	export const PWD: string;
+	export const XDG_SESSION_DESKTOP: string;
 	export const LOGNAME: string;
 	export const XDG_SESSION_TYPE: string;
 	export const npm_config_init_module: string;
-	export const SYSTEMD_EXEC_PID: string;
 	export const _: string;
 	export const CMD_DURATION_MS: string;
 	export const MOTD_SHOWN: string;
@@ -61,11 +59,9 @@ declare module '$env/static/private' {
 	export const _JAVA_AWT_WM_NONREPARENTING: string;
 	export const XDG_CURRENT_DESKTOP: string;
 	export const npm_package_version: string;
-	export const MEMORY_PRESSURE_WATCH: string;
 	export const STARSHIP_SHELL: string;
 	export const WAYLAND_DISPLAY: string;
 	export const PROMPT_COMMAND_RIGHT: string;
-	export const INVOCATION_ID: string;
 	export const INIT_CWD: string;
 	export const ALACRITTY_SOCKET: string;
 	export const npm_lifecycle_script: string;
@@ -143,8 +139,6 @@ declare module '$env/dynamic/private' {
 		LAST_EXIT_CODE: string;
 		NODE: string;
 		DIRS_POSITION: string;
-		CREDENTIALS_DIRECTORY: string;
-		MEMORY_PRESSURE_WRITE: string;
 		PROMPT_MULTILINE_INDICATOR: string;
 		COLOR: string;
 		npm_config_local_prefix: string;
@@ -154,10 +148,10 @@ declare module '$env/dynamic/private' {
 		EDITOR: string;
 		XDG_SEAT: string;
 		PWD: string;
+		XDG_SESSION_DESKTOP: string;
 		LOGNAME: string;
 		XDG_SESSION_TYPE: string;
 		npm_config_init_module: string;
-		SYSTEMD_EXEC_PID: string;
 		_: string;
 		CMD_DURATION_MS: string;
 		MOTD_SHOWN: string;
@@ -166,11 +160,9 @@ declare module '$env/dynamic/private' {
 		_JAVA_AWT_WM_NONREPARENTING: string;
 		XDG_CURRENT_DESKTOP: string;
 		npm_package_version: string;
-		MEMORY_PRESSURE_WATCH: string;
 		STARSHIP_SHELL: string;
 		WAYLAND_DISPLAY: string;
 		PROMPT_COMMAND_RIGHT: string;
-		INVOCATION_ID: string;
 		INIT_CWD: string;
 		ALACRITTY_SOCKET: string;
 		npm_lifecycle_script: string;
