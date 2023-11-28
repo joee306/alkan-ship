@@ -146,11 +146,11 @@ const build_base = (base: any[][]) => {
             structure.at(-1).num += 1;
             // @ts-ignore: Object is possibly 'undefined'.
             structure.at(0).num -= 1;
-            structure.unshift({ element: "OH", num: 1, sides: [] });
+            structure.unshift({ element: "HO", num: 1, sides: [] });
             break;
 
     }
-    return structure;
+    return [structure, base[0][1]];
 }
 
 const build = (arrays: any[][][]) => {
@@ -159,15 +159,17 @@ const build = (arrays: any[][][]) => {
     for (let index = 0; index < arrays.length - 1; index++) {
         const element = arrays[index];
         let arm: PreStructure[] = [];
+        let s = 0;
+        if (base[1] == "anol") s = 1;
         for (let i = 0; i < ALKANE.findIndex((s) => s == element[0][0]) + 1; i++) {
             arm.push({ element: "CH", num: 2, sides: [] });
         }
         arm[arm.length - 1].num += 1;
         element[1].forEach(part => {
-            base[part - 1].sides.push(arm);
+            base[0][part - 1 + s].sides.push(arm);
         });
     }
-    return base;
+    return base[0];
 }
 
 //make recursive for all
