@@ -159,14 +159,12 @@ const build = (arrays: any[][][]) => {
     for (let index = 0; index < arrays.length - 1; index++) {
         const element = arrays[index];
         let arm: PreStructure[] = [];
-        let s = 0;
-        if (base[1] == "anol") s = 1;
         for (let i = 0; i < ALKANE.findIndex((s) => s == element[0][0]) + 1; i++) {
             arm.push({ element: "CH", num: 2, sides: [] });
         }
         arm[arm.length - 1].num += 1;
         element[1].forEach(part => {
-            base[0][part - 1 + s].sides.push(arm);
+            base[0][part - 1].sides.push(arm);
         });
     }
     return base[0];
